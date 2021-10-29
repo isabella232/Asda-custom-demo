@@ -18,10 +18,10 @@
         .underline {
             position: absolute;
             width: 18rem;
-            height: 5px;
+            height: 2px;
             border-radius: 30px;
-            background-color: red;
-            transform: translate(5rem, 2rem);
+            background-color: black;
+            transform: translate(15rem, 3rem);
         }
     }
 
@@ -29,13 +29,7 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        background-image: linear-gradient(
-            69.7deg,
-            rgba(244, 37, 243, 0.5) 1.4%,
-            rgba(244, 87, 1, 0.5) 36.2%,
-            rgba(255, 204, 37, 0.5) 72.2%,
-            rgba(20, 196, 6, 0.5) 113%
-        );
+        background: linear-gradient(163deg, rgba(0,0,0,1) 0%, rgba(255,159,8,0.6012780112044818) 58%);
         z-index: 10;
         top: 0;
         left: 0;
@@ -45,6 +39,9 @@
         z-index: 11;
         color: $fourth-color;
         font-size: 3rem;
+        background: -webkit-linear-gradient(163deg, rgba(0,0,0,1) 0%, rgba(6, 134, 17, 0.601) 58%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     img {
         width: 100%;

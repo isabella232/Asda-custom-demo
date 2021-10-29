@@ -12,7 +12,8 @@ import {
     SortBy,
     connectCurrentRefinements,
     InstantSearch,
-    ExperimentalDynamicWidgets
+    ExperimentalDynamicWidgets,
+    HierarchicalMenu
 } from 'react-instantsearch-dom';
 
 //COMPONENTS
@@ -102,23 +103,23 @@ const SearchResults = () => {
                     <div className="searchPanel-results">
                     {catOne ?    (<Configure
                                 userToken={persona}
-                                filters="categorylvl3:'Sunglasses'"
+                                filters="categories.lvl0:'drinks'"
                                 enablePersonalization={true}
                                 hitsPerPage={21}
                             />) : ('') }
                     {catTwo ? (  <Configure
                                 userToken={persona}
-                                filters="categorylvl3:'Vision Care'"
+                                filters="categories.lvl0:'fresh-food-bakery'"
                                 enablePersonalization={true}
                                 hitsPerPage={21}
                             />) : ('')}
 
-                    {searchVisible ? ( <Configure
+                    {/* {searchVisible ? ( <Configure
                                 userToken={persona}
                                 enablePersonalization={true}
                                 hitsPerPage={21}
                                 query={query}
-                            />): ('')}
+                            />): ('')} */}
                     
                             <FilterBtn
                                 filterAnim={filterAnim}
@@ -135,6 +136,12 @@ const SearchResults = () => {
                                 transformItems={items =>
                                 items.filter(item => item.attribute !== 'price')
                                 }/>
+                             <Configure
+                                userToken={persona}
+                                enablePersonalization={true}
+                                query={query}
+                                hitsPerPage={21}             
+                            />
                             <CustomHits />
                             </div>
                           

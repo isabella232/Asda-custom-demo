@@ -34,7 +34,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
 }
 
@@ -48,16 +48,19 @@
     margin: 0.2rem;
     padding: 1rem;
     cursor: pointer;
+    border: 1px solid $seventh-color;
 
     .infos {
         h3 {
-            font-size: 1rem;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
+            margin: 1rem auto;
+            font-size: 0.8rem;
+            // text-overflow: ellipsis;
+            // overflow: hidden;
+            // white-space: nowrap;
+            text-align: center;
         }
         p {
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight: 200;
         }
     }

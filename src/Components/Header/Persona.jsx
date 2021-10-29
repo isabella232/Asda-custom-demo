@@ -17,9 +17,9 @@ const SelectPersona = () => {
         input: styles => ({ width: '100%' }),
         container: styles => ({ width: '100%' }),
         valueContainer: styles => ({ backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }),
-        placeholder: styles => ({ backgroundColor: 'transparent', fontSize: '1rem', color: 'black', fontFamily: "Oswald", textTransform: 'uppercase' }),
+        placeholder: styles => ({ backgroundColor: 'transparent', fontSize: '0.8rem', color: 'black', fontFamily: "Open Sans", textTransform: 'capitalise' }),
         indicatorSeparator: styles => ({ display: "none" }),
-        dropdownIndicator: styles => ({ color: 'black' }),
+        dropdownIndicator: styles => ({ color: 'black', display: "none"}),
         singleValue: styles => ({ top: '0', width: '50%' }),
         menu: styles => ({ width: '8rem', top: '2rem', left: '0', position: 'absolute', backgroundColor: 'white', borderRadius: '2px', zIndex: '99' }),
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
@@ -27,7 +27,7 @@ const SelectPersona = () => {
                 ...styles,
                 backgroundColor: isFocused ? 'black' : 'white',
                 color: isFocused ? 'white' : 'black',
-                fontSize: '0.8rem', fontFamily: "Adobe Clean Light", margin: '1rem',
+                fontSize: '0.8rem', fontFamily: "Open Sans", margin: '1rem',
                 transition: 'all 0.2s',
                 cursor: 'pointer',
                 width: '80%',
@@ -52,6 +52,7 @@ const SelectPersona = () => {
 
     return (
         <Select options={options} onChange={selectValue}  styles={colourStyles} placeholder={"Persona"} />
+       
     )
 
 }
