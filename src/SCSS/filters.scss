@@ -23,6 +23,7 @@
             }
             .button-filter {
                 @include btn;
+                color: rgba(0, 0, 0, 0.8);
             }
             .button-filter:hover {
                 @include btn-hover;
@@ -98,7 +99,7 @@
 .refined-filter{
     // border: 2px solid $second-color !important;
     font-weight: bold;
-    background: linear-gradient(163deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 26%, rgba(232,11,1,0.2007177871148459) 100%);
+    background: linear-gradient(163deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 26%, rgba(66, 232, 1, 0.201) 100%);
     transition: 0.3s ease-in-out;
 }
 

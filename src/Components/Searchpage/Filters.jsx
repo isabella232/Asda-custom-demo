@@ -5,7 +5,8 @@ import {
     connectRefinementList,
     connectHierarchicalMenu,
     connectRange,
-    ExperimentalDynamicWidgets
+    ExperimentalDynamicWidgets,
+    Configure
 } from 'react-instantsearch-dom';
 
 // COMPONENTS IMPORT
@@ -18,58 +19,56 @@ import 'rheostat/css/rheostat.css';
 
 // expects an attribute which is formated as a hierarchy
 // see https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/#hierarchical-facets
-const HeirarchicalCategoriesFilter = ({
-    title,
-    items,
-    refine,
-    createURL }) => {
+const HierarchicalCategoriesFilter = ({ title, items, refine, createURL }) => {
     const [category, setcategory] = useState(true);
+    console.log(items)
     return (
-        <div className="filters-content">
-            <div
-                onClick={() => {
-                    setcategory(!category);
-                }}
-                className="title"
-            >
-                <h3>{title}</h3>
-                <p>-</p>
-            </div>
-            <ul
-                className={`filter-list-content ${category ? 'active-filters' : 'hidden-filters'
-                    }`}
-            >
-                {items.map(item => (
-                    <li className="filter-list" key={item.label}>
-                        <a
-                            className={`button-filter ${
-                                item.isRefined ? 'refined-filter' : ''
-                            }`}
-                            href={createURL(item.value)}
-                            style={{ fontWeight: item.isRefined ? 'bold' : '' }}
-                            onClick={event => {
-                                event.preventDefault();
-                                refine(item.value);
-                            }}
-                        >
-                            {item.label}
-                        </a>
-                        {item.items && (
-                            <HierarchicalMenu
-                                items={item.items}
-                                refine={refine}
-                                createURL={createURL}
-                            />
-                        )}
-                    </li>
-                ))}
-            </ul>
-            <div className="line"></div>
+      <div className="filters-content">
+        <div
+          onClick={() => {
+            setcategory(!category);
+          }}
+          className="title"
+        >
+          <h3>{title}</h3>
+          {/* <p>-</p> */}
         </div>
+        <ul
+          className={`filter-list-content ${
+            category ? "active-filters" : "hidden-filters"
+          }`}
+        >
+          {items.map((item) => (
+            <li className="filter-list" key={item.label}>
+              <a
+                className={`button-filter ${
+                  item.isRefined ? "refined-filter" : ""
+                }`}
+                href={createURL(item.value)}
+                style={{ fontWeight: item.isRefined ? "bold" : "" }}
+                onClick={(event) => {
+                  event.preventDefault();
+                  refine(item.value);
+                }}
+              >
+                {item.label}
+              </a>
+              {item.items && (
+                <HierarchicalCategoriesFilter
+                  items={item.items}
+                  refine={refine}
+                  createURL={createURL}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+        <div className="line"></div>
+      </div>
     );
-};
-
-const HierarchicalMenu = connectHierarchicalMenu(HeirarchicalCategoriesFilter);
+  };
+  
+  const HierarchicalMenu = connectHierarchicalMenu(HierarchicalCategoriesFilter);
 
 // expects an attribute which is an array of items
 const RefinementList = ({title, items, refine, searchForItems }) => {
@@ -175,9 +174,7 @@ const RangeSlider = ({ title, min, max, currentRefinement, canRefine, refine }) 
                 values={[currentRefinement.min, currentRefinement.max]}
                 onChange={onChange}
                 onValuesUpdated={onValuesUpdated}
-                background=''
-               
-                
+                background=''   
             >
                 <div
                     className="rheostat-marker rheostat-marker--large"
@@ -201,24 +198,35 @@ const GenericRangeSlider = connectRange(RangeSlider);
 // MAIN COMPONENT
 const CustomFilters = ({ filterAnim }) => {
     return (
-        <div className={`filters-wrapper ${filterAnim ? "showWrapperFilter" : "is-closed hideWrapperFilter"}`}>
-            <div>
-                <CustomStateResults />
-                <ExperimentalDynamicWidgets
-                 // fallbackComponent={Menu}
-                 >
-                 {/* <HierarchicalMenu attribute={window.hierarchicalCategoriesAttribute} /> */}
-                {window.refinementListAttributes.map((e, index) => 
-                  (
-                    <GenericRefinementList attribute={e} title={e} key={index}/>
-                  )
-                )}
-                {window.priceAttribute !== '' && <GenericRangeSlider attribute={window.priceAttribute} min={10} max={550} />}
-                </ExperimentalDynamicWidgets>
-            </div>
+      <div
+        className={`filters-wrapper ${
+          filterAnim ? "showWrapperFilter" : "hideWrapperFilter"
+        }`}
+      >
+        <div>
+          <CustomStateResults />
+          <ExperimentalDynamicWidgets
+          // fallbackComponent={Menu}
+          >
+            <HierarchicalMenu
+              attributes={window.hierarchicalCategoriesAttribute}
+              title="Categories"
+              searchable
+            />
+            {window.refinementListAttributes.map((e, index) => (
+              <GenericRefinementList attribute={e} title={e} searchable key={index} />
+            ))}
+            {window.priceAttribute !== "" && (
+              <GenericRangeSlider
+                attribute={window.priceAttribute}
+                title="Price"
+                min={1}
+                max={100}
+              />
+            )}
+          </ExperimentalDynamicWidgets>
         </div>
-
+      </div>
     );
-};
-
+  };
 export { CustomFilters };

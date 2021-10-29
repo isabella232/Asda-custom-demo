@@ -1,11 +1,49 @@
 @import "../SCSS/variables.scss";
 
-.headerUp {
+
+.header{
     width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    background-color: $third-color;
+}
+
+.header__up{
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin: 0 auto;
+    ul{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        width: 50%;
+        justify-content: flex-end;
+
+        .register{
+            font-weight: bold;
+            color: $second-color;
+        }
+    }
+
+    li{
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+
+        .chevron-down{
+            margin-top: 0.1rem;
+        }
+
+        svg{
+            width: 1rem;
+            margin-left: 0.5rem ;
+        }
+    }
 }
 
 .header-wrapper {
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -15,53 +53,8 @@
         display: flex;
         align-items: center;
     }
-
-    ul {
-        display: flex;
-        align-items: center;
-
-        li:last-child {
-            width: 6rem;
-        }
-
-        li {
-            margin: 0 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            position: relative;
-            font-size: 1rem;
-
-            &::before {
-                content: "";
-                position: absolute;
-                background-color: black;
-                height: 4px;
-                width: 100%;
-                bottom: -0.5rem;
-                transform-origin: 100% 0;
-                transform: scaleX(0);
-                transition: transform 0.4s;
-            }
-
-            &:hover::before {
-                transform-origin: 0 0;
-                transform: scaleX(1);
-            }
-            .design {
-                display: flex;
-                align-items: center;
-            }
-            .fa-palette {
-                margin-right: 0.2rem;
-            }
-        }
-        .promo {
-            color: $second-color;
-        }
-    }
-
     .logo {
-        width: 18%;
+        width: 30%;
         cursor: pointer;
     }
 
@@ -78,6 +71,46 @@
             margin-left: 1rem;
         }
        
+    }
+}
+
+.header-down{
+    background-color: $seventh-color;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    ul {
+        display: flex;
+        align-items: center;
+        padding-left: 5.5rem;
+
+        li {
+            margin: 0 0.5rem;
+            font-weight: 400;
+            cursor: pointer;
+            position: relative;
+            font-size: 1rem;
+            font-family: $main-font;
+            color: rgba(0, 0, 0, 0.8);
+
+            &::before {
+                content: "";
+                position: absolute;
+                background-color: $second-color;
+                height: 1px;
+                width: 100%;
+                bottom: -0.5rem;
+                transform-origin: 100% 0;
+                transform: scaleX(0);
+                transition: transform 0.4s;
+            }
+
+            &:hover::before {
+                transform-origin: 0 0;
+                transform: scaleX(1);
+            }
+        
+        }
     }
 }
 
@@ -101,7 +134,7 @@
         border-radius: 2px;
         border: 1px solid $third-color;
         padding: 0.6rem;
-        background-color: $third-color;
+        background-color: $fourth-color;
         transition: 0.2s ease-in-out;
 
         &:focus {

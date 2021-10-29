@@ -68,6 +68,21 @@
     transform: translate(0%, 15%);
 }
 
+.weight__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .Hit-list__icon{
+    width: 2rem;
+    path{
+      fill: #b8b4b4;
+    }
+  }
+  .weight__text{
+    font-size: 0.8rem;
+  }
+}
+
 
 // RECENT SEARCHES
 .federatedSearch-recentSearches_items {

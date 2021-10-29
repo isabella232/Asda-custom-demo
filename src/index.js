@@ -19,16 +19,16 @@ const store = createStore(
 );
 
 //CHANGE ME IF USING NEW INDEX
-window.appID = 'JDBD6EJM33';
-window.key = '0fe54b2e3991d370c91376981aff9d48';
-window.index = 'rayban_merged';
+window.appID = 'T28VFYO9RS';
+window.key = 'd51558b9d3daea110f05e8c1a7b65253';
+window.index = 'Asda_v2';
 
 //SORTBY
-window.index_asc = 'rayban_merged_price_asc';
-window.index_desc = 'rayban_merged_price_dsc';
+window.index_asc = 'Asda_v2_price_asc';
+window.index_desc = 'Asda_v2_price_desc';
 
 // QUERY SUGG
-window.indexSugg = 'rayban_merged_query_suggestions2';
+window.indexSugg = 'Asda_v2_query_suggestions';
 
 // DESCRIPTION ABOUT HOW THE FOLLOWING VARIABLES ARE USED
 // Please ensure you set your attributes in the following parts of the dashboard first:
@@ -36,13 +36,18 @@ window.indexSugg = 'rayban_merged_query_suggestions2';
 // If you don't see facet display, ask the internal dashboard team to make sure you have the favet ordering feature enabled
 
 // ADD ATTRIBUTES FOR REFINEMENT LISTS TO THE ARRAY, IF NONE LEAVE ARRAY EMPTY
-window.refinementListAttributes = ['gender', 'color', 'size', 'age_group', 'FRAMEMATERIAL', 'FrameShapeDescription'];
+window.refinementListAttributes = ['BRAND'];
 
 // ADD ATTRIBUTE FOR PRICE, IF NONE LEAVE AS EMPTY STRING
-window.priceAttribute = 'price';
+window.priceAttribute = 'PRICE_INT';
 
 // ADD ATTRIBUTE FOR HIERARCHY, IF NONE LEAVE AS EMPTY STRING
-window.hierarchicalCategoriesAttribute = '';
+window.hierarchicalCategoriesAttribute = [
+    'categories.lvl0',
+    'categories.lvl1',
+    'categories.lvl2',
+    'categories.lvl3',
+  ];
 
 ReactDOM.render(
     <Provider store={store}>

@@ -32,7 +32,7 @@ const FederatedSearch = () => {
               <h3 className="federated-title">Products</h3>
             </ResultsTitle>
           </div>
-          <Configure hitsPerPage={200} userToken={persona} />
+          <Configure hitsPerPage={6} userToken={persona} />
           <Results>
             <CustomHits />
           </Results>
