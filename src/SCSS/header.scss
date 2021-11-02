@@ -126,6 +126,12 @@
         width: 100%;
         display: flex;
         position: relative;
+        svg {
+            width: 30px;
+            right: 1rem;
+            top: 1.2rem;
+            position: absolute;
+        }
     }
 
     input {
@@ -143,34 +149,9 @@
             outline: none;
         }
     }
-     svg {
-            width: 30px;
-            right: 1rem;
-            top: 1.2rem;
-            position: absolute;
-        }
+   
 }
 
-// VOICESEARCH
-.voiceSearch-wrapper {
-    width: 100%;
-
-    .ais-VoiceSearch {
-        position: absolute;
-        right: 3rem;
-        top: 30%;
-        cursor: pointer;
-        .ais-VoiceSearch-button {
-            position: unset;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-    }
-}
-.ais-VoiceSearch-status {
-    display: none;
-}
 
 .stop-scrolling{
     overflow: hidden;

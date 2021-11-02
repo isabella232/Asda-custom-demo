@@ -241,6 +241,7 @@ const FilterBtn = ({ filterAnim, setFilterAnim }) => {
 
 const CurrentRefinements = ({ items, refine }) => {
     const unique = uniqBy(items, 'currentRefinement');
+    console.log(items)
 
     return (
         <ul className="refinement-content">
@@ -252,7 +253,7 @@ const CurrentRefinements = ({ items, refine }) => {
                             <ul className="refinement-results">
                                 {item.items.map(nested => (
                                     <li key={nested.label}>
-                                        <button
+                                        <a
                                             className="refinement-filter"
                                             href="#"
                                             onClick={event => {
@@ -270,21 +271,25 @@ const CurrentRefinements = ({ items, refine }) => {
                                             >
                                                 X
                                             </span>
-                                        </button>
+                                        </a>
                                     </li>
                                 ))}
                             </ul>
                         </React.Fragment>
                     ) : (
-                        <button
+                        <>
+                        <a
+                            className="refinement-filter"
                             href="#"
                             onClick={event => {
                                 event.preventDefault();
                                 refine(item.value);
-                            }}
-                        >
-                            {item.label}
-                        </button>
+                            }}>
+                            <p>{item.currentRefinement}</p>
+                            <span className="close-refinment" onClick={() => {refine(item.value);}}>X</span>
+                        </a>
+                     
+                     </>
                     )}
                 </li>
             ))}
