@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import logo from '../../Assets/Images/logo.png';
 import CustomSearchBox from '../Searchpage/SearchBox';
 import SelectPersona from './Persona';
+import ShopChoice from './ShopChoice';
 import {
     searchVisible,
     federatedSearchVisible,
@@ -35,6 +36,12 @@ const Header = () => {
         <header className="header">
             <div className="header__up">
                 <ul>
+                    <li>
+                        <ShopChoice />
+                        <svg className="shopChoice__icon" viewBox="0 0 38 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 0C8.5 0 0 8.5 0 19C0 38 19 50 19 50C19 50 38 38 38 19C38 8.5 29.5 0 19 0ZM19 26C15.1 26 12 22.9 12 19C12 15.1 15.1 12 19 12C22.9 12 26 15.1 26 19C26 22.9 22.9 26 19 26Z" fill="black"/>
+                        </svg>
+                    </li>
                     <li>
                         <p>Help center</p> 
                     </li>

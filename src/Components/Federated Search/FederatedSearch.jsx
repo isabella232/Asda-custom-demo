@@ -18,6 +18,8 @@ import { getQuery } from '../../actions/getQuery';
 
 const FederatedSearch = () => {
   const { persona } = useSelector((state) => state.selectedPersona);
+  const { shop } = useSelector((state) => state.selectShop);
+  console.log(shop)
   return (
     <div className="federatedSearch">
       <div className="federatedSearch-wrapper">
@@ -32,7 +34,7 @@ const FederatedSearch = () => {
               <h3 className="federated-title">Products</h3>
             </ResultsTitle>
           </div>
-          <Configure hitsPerPage={6} userToken={persona} />
+          <Configure hitsPerPage={6} userToken={persona} filters={shop ? (`shop_availability:'${shop}'`) : ('')} />
           <Results>
             <CustomHits />
           </Results>
@@ -111,5 +113,7 @@ const Results = connectStateResults(
 const ResultsTitle = connectStateResults(({ searchResults, children }) =>
   searchResults && searchResults.nbHits !== 0 ? children : ""
 );
+
+
 
 export default FederatedSearch;
