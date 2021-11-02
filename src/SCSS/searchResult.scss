@@ -1,5 +1,5 @@
-@import "./variables.scss";
-@import "./mixin.scss";
+@import './variables.scss';
+@import './mixin.scss';
 
 .searchResult-wrapper {
     width: 100%;
@@ -15,17 +15,16 @@
     position: relative;
 }
 
-.hits-panel-wrapper{
+.hits-panel-wrapper {
+    width: 85% !important;
     position: relative;
     flex-grow: 2;
     // width: 80%;
     will-change: transform;
     transform-origin: 100% 0;
     width: 100%;
-    transition: transform .35s ease-in-out
+    transition: transform 0.35s ease-in-out;
 }
-
-
 
 // VOICESEARCH
 .voiceSearch-wrapper {
@@ -85,7 +84,6 @@
     width: 100%;
     margin: 3rem auto;
     position: relative;
-  
 
     .filters-wrapper {
         width: 20%;
@@ -172,6 +170,6 @@
     }
 }
 
-.no-results-hits{
+.no-results-hits {
     margin-left: 3rem;
 }
