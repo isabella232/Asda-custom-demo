@@ -5,8 +5,8 @@ import {selectPersona} from '../../actions/selectPersona'
 
 const SelectPersona = () => {
     const options = [
-        { value: 'RB_Tiffany', label: 'Tiffany' },
-        { value: 'RB_Ben', label: 'Ben' },
+        { value: 'Asda_Tiffany', label: 'Tiffany' },
+        { value: 'Asda_Ben', label: 'Ben' },
         { value: 'Neutral', label: 'Neutral' }
     ]
 

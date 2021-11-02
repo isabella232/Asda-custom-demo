@@ -1,22 +1,18 @@
-import React from 'react'
+import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { Configure, InstantSearch } from 'react-instantsearch-dom';
 import { CustomHitsModal } from '../Searchpage/Hits';
-
-
+import { useSelector, useDispatch } from 'react-redux';
 
 const CarouselHome = () => {
-    const searchClient = algoliasearch(
-        window.appID,
-        window.key
+    const searchClient = algoliasearch(window.appID, window.key);
+    const { persona } = useSelector(state => state.selectedPersona);
+    return (
+        <InstantSearch indexName={window.index} searchClient={searchClient}>
+            <Configure hitsPerPage={8} userToken={persona} />
+            <CustomHitsModal />
+        </InstantSearch>
     );
-    return (    
-    <InstantSearch
-        indexName={window.index}    
-        searchClient={searchClient}>
-        <Configure hitsPerPage={8} ruleContexts='aviator' />
-        <CustomHitsModal />
-    </InstantSearch> );
-}
- 
+};
+
 export default CarouselHome;
