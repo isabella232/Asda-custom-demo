@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, AnimateSharedLayout } from 'framer-motion';
+import CarouselHome from '../Homepage/Carousel';
 
 import {
     Pagination,
@@ -13,7 +14,8 @@ import {
     connectCurrentRefinements,
     InstantSearch,
     ExperimentalDynamicWidgets,
-    HierarchicalMenu
+    HierarchicalMenu,
+    connectStateResults
 } from 'react-instantsearch-dom';
 
 //COMPONENTS
@@ -37,14 +39,19 @@ const SearchResults = () => {
 
     // REDUX STATE & ACTIONS
     const dispatch = useDispatch();
-    const { searchVisible, catTwo, catOne, catMens, catKids, homepage } = useSelector(
-        state => state.visibility
-    );
+    const {
+        searchVisible,
+        catTwo,
+        catOne,
+        catMens,
+        catKids,
+        homepage
+    } = useSelector(state => state.visibility);
     const federatedvisble = useSelector(
         state => state.visibility.federatedSearchVisible
     );
 
-    const {query} = useSelector(state => state.getQuery)
+    const { query } = useSelector(state => state.getQuery);
     const { showModal } = useSelector(state => state.productDetail);
     const { persona } = useSelector(state => state.selectedPersona);
 
@@ -54,29 +61,36 @@ const SearchResults = () => {
 
     return (
         <div className="searchResult-wrapper">
-            {catOne || catTwo || catMens || catKids || homepage ?  
-            (<div className={`container-federated 
-                ${federatedvisble ? 'active' : 'hidden'}`}>
-                    
-                    <div  onClick={e => { if (e.target === e.currentTarget) { 
-                        dispatch(federatedSearchVisible(false))
-                        dispatch(getQuery(''))
-                        }}}>
+            {catOne || catTwo || catMens || catKids || homepage ? (
+                <div
+                    className={`container-federated 
+                ${federatedvisble ? 'active' : 'hidden'}`}
+                >
+                    <div
+                        onClick={e => {
+                            if (e.target === e.currentTarget) {
+                                dispatch(federatedSearchVisible(false));
+                                dispatch(getQuery(''));
+                            }
+                        }}
+                    >
                         <InstantSearch
-                        searchClient={searchClient} indexName={window.index} indexId="categoryPage">
-                        <VirtualSearchBox />
-                        <FederatedSearch/>
+                            searchClient={searchClient}
+                            indexName={window.index}
+                            indexId="categoryPage"
+                        >
+                            <VirtualSearchBox />
+                            <FederatedSearch />
                         </InstantSearch>
-                        <Configure query=""/>
+                        <Configure query="" />
                     </div>
-                    </div>
-                ) : (null)
-                
-           
-                }
+                </div>
+            ) : null}
             <div
                 className={`container ${
-                    searchVisible || catOne || catTwo || catMens || catKids ? 'active' : 'hidden'
+                    searchVisible || catOne || catTwo || catMens || catKids
+                        ? 'active'
+                        : 'hidden'
                 }`}
             >
                 <QueryRuleCustomData
@@ -97,55 +111,65 @@ const SearchResults = () => {
                         <CustomSuggestions attribute="title" />
                     </Index> */}
                     <Banner />
-                
-                   
-                 
+
                     <div className="searchPanel-results">
-                    {catOne ?    (<Configure
+                        {catOne ? (
+                            <Configure
                                 userToken={persona}
                                 filters="categories.lvl0:'drinks'"
                                 enablePersonalization={true}
                                 hitsPerPage={21}
-                            />) : ('') }
-                    {catTwo ? (  <Configure
+                            />
+                        ) : (
+                            ''
+                        )}
+                        {catTwo ? (
+                            <Configure
                                 userToken={persona}
                                 filters="categories.lvl0:'fresh-food-bakery'"
                                 enablePersonalization={true}
                                 hitsPerPage={21}
-                            />) : ('')}
+                            />
+                        ) : (
+                            ''
+                        )}
 
-                    {/* {searchVisible ? ( <Configure
+                        {/* {searchVisible ? ( <Configure
                                 userToken={persona}
                                 enablePersonalization={true}
                                 hitsPerPage={21}
                                 query={query}
                             />): ('')} */}
-                    
-                            <FilterBtn
-                                filterAnim={filterAnim}
-                                setFilterAnim={setFilterAnim}
-                            />
-                            <CustomFilters
-                                filterAnim={filterAnim}
-                                isDynamicFactesOn={isDynamicFactesOn}
-                                setIsDynamicFactesOn={setIsDynamicFactesOn}
-                            />
-                            <div  className="hits-panel-wrapper">
-                            <SortAndStat/>
+
+                        <FilterBtn
+                            filterAnim={filterAnim}
+                            setFilterAnim={setFilterAnim}
+                        />
+                        <CustomFilters
+                            filterAnim={filterAnim}
+                            isDynamicFactesOn={isDynamicFactesOn}
+                            setIsDynamicFactesOn={setIsDynamicFactesOn}
+                        />
+                        <div className="hits-panel-wrapper">
+                            <SortAndStat />
                             <CustomCurrentRefinements
                                 transformItems={items =>
-                                items.filter(item => item.attribute !== 'price')
-                                }/>
-                             <Configure
+                                    items.filter(
+                                        item => item.attribute !== 'price'
+                                    )
+                                }
+                            />
+                            <Configure
                                 userToken={persona}
                                 enablePersonalization={true}
                                 query={query}
-                                hitsPerPage={21}             
+                                hitsPerPage={21}
                             />
-                            <CustomHits />
-                            </div>
-                          
+                            <Results>
+                                <CustomHits />
+                            </Results>
                         </div>
+                    </div>
 
                     <div className="pagination">
                         <Pagination />
@@ -157,36 +181,36 @@ const SearchResults = () => {
 };
 
 const SortAndStat = () => {
-    return (   
-    <div className="sort-and-stat">
-    <div>
-        <Stats />
-        <CustomClearRefinements />
-    </div>
-    <SortBy
-        defaultRefinement={window.index}
-        items={[
-            {
-                value: window.index,
-                label: 'Relevancy'
-            },
-            {
-                value: window.index_desc,
-                label: 'Price Desc.'
-            },
-            {
-                value: window.index_asc,
-                label: 'Price Asc.'
-            }
-            // {
-            //     value: window.index_pop,
-            //     label: 'Popularity'
-            // }
-        ]}
-    />
-</div>
-)
-}
+    return (
+        <div className="sort-and-stat">
+            <div>
+                <Stats />
+                <CustomClearRefinements />
+            </div>
+            <SortBy
+                defaultRefinement={window.index}
+                items={[
+                    {
+                        value: window.index,
+                        label: 'Relevancy'
+                    },
+                    {
+                        value: window.index_desc,
+                        label: 'Price Desc.'
+                    },
+                    {
+                        value: window.index_asc,
+                        label: 'Price Asc.'
+                    }
+                    // {
+                    //     value: window.index_pop,
+                    //     label: 'Popularity'
+                    // }
+                ]}
+            />
+        </div>
+    );
+};
 
 const ClearRefinements = ({ items, refine }) => (
     <a
@@ -213,7 +237,6 @@ const FilterBtn = ({ filterAnim, setFilterAnim }) => {
         </div>
     );
 };
-
 
 const CurrentRefinements = ({ items, refine }) => {
     const unique = uniqBy(items, 'currentRefinement');
@@ -269,5 +292,18 @@ const CurrentRefinements = ({ items, refine }) => {
 };
 
 const CustomCurrentRefinements = connectCurrentRefinements(CurrentRefinements);
+
+const Results = connectStateResults(
+    ({ searchState, searchResults, children }) =>
+        searchResults && searchResults.nbHits !== 0 ? (
+            children
+        ) : (
+            <div className="no-results-hits">
+                <h3>NO RESULTS FOUND for {searchState.query}.</h3>
+                <p>You can look at our product suggestion below </p>
+                <CarouselHome />
+            </div>
+        )
+);
 
 export default SearchResults;
