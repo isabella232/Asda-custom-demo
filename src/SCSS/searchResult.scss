@@ -27,22 +27,15 @@
 }
 
 // VOICESEARCH
-.voiceSearch-wrapper {
-    width: 100%;
 
-    .ais-VoiceSearch {
-        position: absolute;
-        right: 3rem;
-        top: 30%;
-        cursor: pointer;
-        .ais-VoiceSearch-button {
-            position: unset;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
+.voiceSearch__wrapper{
+    position: relative;
+    .ais-VoiceSearch-button{
+        color: black;
     }
+   
 }
+
 .ais-VoiceSearch-status {
     display: none;
 }
