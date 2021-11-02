@@ -3,15 +3,16 @@
 
 .modal-bg {
     height: 100vh;
-    width: 75vw;
+    width: 100vw;
     top: 0;
     left: 0;
     position: fixed;
     animation: modalBG forwards 0.5s ease-in-out;
+    z-index: 999;
 }
 
 .modal-wrapper {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -20,8 +21,8 @@
     height: 90vh;
     width: 90vw;
     position: fixed;
-    top: 20%;
-    left: 40%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
     display: flex;
@@ -47,17 +48,9 @@
     border-radius: 3px;
 }
 
-.fake-filters {
-    width: 100%;
-    margin-left: 2rem;
-    img {
-        width: 100%;
-        object-fit: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
+
+  
+
 
 .close-modal {
     position: absolute;
@@ -68,13 +61,16 @@
 
 .product-side {
     margin: 0 auto;
-    width: 35%;
+    width: 45%;
+    display: flex;
+    align-items: center;
+   
 }
 
 .modal-images {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%;
 
     img {
         width: 100%;
@@ -82,8 +78,7 @@
 }
 
 .modal-infos {
-    margin-top: 3rem;
-    width: 80%;
+    width: 50%;
 
     h3,
     p {
@@ -112,40 +107,36 @@
             color: $heigth-color;
         }
     }
-    .modal-infos__grame-prod__prices {
+
+    .modal-infos__grame-prod__price__wp{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
         .modal-infos__grame-prod__prices__buttons {
             display: flex;
             justify-content: space-evenly;
-            margin: 1rem 0;
+            gap: 1rem;
+            
             .modal-infos__grame-prod__prices__buttons__green {
-                background-color: $second-color;
-                border: none;
-                padding: 15px;
-                color: white;
-                width: 200px;
-                border-radius: 10px;
-                font-weight: 600;
-                font-size: 25px;
-                cursor: pointer;
-                transition: 0.2s ease-in-out;
+               @include btn;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               color: white;
+               background-color: $second-color;
+               
             }
             .modal-infos__grame-prod__prices__buttons__white {
-                background-color: white;
-                border: none;
-                padding: 15px;
-                color: $second-color;
-                width: 300px;
-                border: $second-color solid 1px;
-                border-radius: 8px;
-                font-weight: 600;
-                font-size: 25px;
-                cursor: pointer;
-                transition: 0.2s ease-in-out;
+                @include btn;
                 display: flex;
-                justify-content: center;
                 align-items: center;
+                justify-content: center;
+                color: $second-color;
+                
                 svg {
-                    margin: 0 1rem;
+                    margin-right: 1rem;
                 }
             }
             .modal-infos__grame-prod__prices__buttons__green:hover {
@@ -154,18 +145,24 @@
                 border: $second-color solid 1px;
                 transition: 0.2s ease-in-out;
             }
-        }
+        
         .modal-infos__grame-prod__prices__price {
-            color: $heigth-color;
+            color: $second-color;
             font-size: 2em;
+            font-weight: bold;
         }
+       
     }
     .line {
         border-bottom: 1px solid $heigth-color;
         width: 100%;
     }
+
+    .modal-infos__grame-prod__wp{
+        width: 10rem;
+    }
     .modal-infos__grame-prod__img {
-        width: 25%;
+        width: 100%;
     }
 }
 
@@ -198,9 +195,13 @@
 @keyframes modalBG {
     0% {
         background-color: rgba(0, 0, 0, 0);
+        top: 0;
+        left: 0;
     }
     100% {
         background-color: rgba(0, 0, 0, 0.2);
+        top: 0;
+        left: 0;
     }
 }
 

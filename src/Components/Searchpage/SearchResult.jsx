@@ -19,7 +19,7 @@ import {
 } from 'react-instantsearch-dom';
 
 //COMPONENTS
-import { CustomHits } from './Hits';
+import { CustomHits, ModalProduct } from './Hits';
 import { CustomFilters, DynamicFacets } from './Filters';
 import CustomSearchBox from './SearchBox';
 import VirtualSearchBox from './VirtualSearchBox';
@@ -29,6 +29,7 @@ import CustomSuggestions from './Suggestions';
 import FederatedSearch from '../Federated Search/FederatedSearch';
 import { showModalPDP } from '../../actions/productDetail';
 import { federatedSearchVisible } from '../../actions/visibility';
+
 
 // UNIQBY LIB
 import uniqBy from 'lodash.uniqby';
@@ -167,11 +168,11 @@ const SearchResults = () => {
                                     }
                                 />
 
-                                <CustomHits />
+                                <CustomHits  />
                             </Results>
                         </div>
                     </div>
-
+                    <ModalProduct />
                     <div className="pagination">
                         <Pagination />
                     </div>
@@ -252,7 +253,7 @@ const CurrentRefinements = ({ items, refine }) => {
                             <ul className="refinement-results">
                                 {item.items.map(nested => (
                                     <li key={nested.label}>
-                                        <button
+                                        <a
                                             className="refinement-filter"
                                             href="#"
                                             onClick={event => {
@@ -270,21 +271,25 @@ const CurrentRefinements = ({ items, refine }) => {
                                             >
                                                 X
                                             </span>
-                                        </button>
+                                        </a>
                                     </li>
                                 ))}
                             </ul>
                         </React.Fragment>
                     ) : (
-                        <button
+                        <>
+                        <a
+                            className="refinement-filter"
                             href="#"
                             onClick={event => {
                                 event.preventDefault();
                                 refine(item.value);
-                            }}
-                        >
-                            {item.label}
-                        </button>
+                            }}>
+                            <p>{item.currentRefinement}</p>
+                            <span className="close-refinment" onClick={() => {refine(item.value);}}>X</span>
+                        </a>
+                     
+                     </>
                     )}
                 </li>
             ))}
