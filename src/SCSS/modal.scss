@@ -21,7 +21,7 @@
     width: 90vw;
     position: fixed;
     top: 20%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%, -50%);
     z-index: 999;
     display: flex;
@@ -113,6 +113,48 @@
         }
     }
     .modal-infos__grame-prod__prices {
+        .modal-infos__grame-prod__prices__buttons {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 1rem 0;
+            .modal-infos__grame-prod__prices__buttons__green {
+                background-color: $second-color;
+                border: none;
+                padding: 15px;
+                color: white;
+                width: 200px;
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 25px;
+                cursor: pointer;
+                transition: 0.2s ease-in-out;
+            }
+            .modal-infos__grame-prod__prices__buttons__white {
+                background-color: white;
+                border: none;
+                padding: 15px;
+                color: $second-color;
+                width: 300px;
+                border: $second-color solid 1px;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 25px;
+                cursor: pointer;
+                transition: 0.2s ease-in-out;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    margin: 0 1rem;
+                }
+            }
+            .modal-infos__grame-prod__prices__buttons__green:hover {
+                background-color: white;
+                color: green;
+                border: $second-color solid 1px;
+                transition: 0.2s ease-in-out;
+            }
+        }
         .modal-infos__grame-prod__prices__price {
             color: $heigth-color;
             font-size: 2em;
