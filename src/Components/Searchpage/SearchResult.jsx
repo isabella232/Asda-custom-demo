@@ -151,14 +151,6 @@ const SearchResults = () => {
                             setIsDynamicFactesOn={setIsDynamicFactesOn}
                         />
                         <div className="hits-panel-wrapper">
-                            <SortAndStat />
-                            <CustomCurrentRefinements
-                                transformItems={items =>
-                                    items.filter(
-                                        item => item.attribute !== 'price'
-                                    )
-                                }
-                            />
                             <Configure
                                 userToken={persona}
                                 enablePersonalization={true}
@@ -166,6 +158,15 @@ const SearchResults = () => {
                                 hitsPerPage={21}
                             />
                             <Results>
+                                <SortAndStat />
+                                <CustomCurrentRefinements
+                                    transformItems={items =>
+                                        items.filter(
+                                            item => item.attribute !== 'price'
+                                        )
+                                    }
+                                />
+
                                 <CustomHits />
                             </Results>
                         </div>
