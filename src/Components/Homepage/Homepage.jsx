@@ -11,6 +11,7 @@ import img5 from '../../Assets/Images/img5.png';
 import footer from '../../Assets/Images/footer.png';
 
 import CarouselHome from './Carousel';
+import CustomCarousel from './CustomCarousel';
 
 const Homepage = () => {
     const { searchVisible, catOne, catTwo } = useSelector(
@@ -42,6 +43,10 @@ const Homepage = () => {
                         ''
                     )}
                     <CarouselHome />
+                </div>
+                <div className="carouselHome">
+                    <h2>Our Products less than 5£</h2>
+                    <CustomCarousel />
                 </div>
                 <div>
                     <img src={img2} alt="home" />
