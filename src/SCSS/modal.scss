@@ -1,17 +1,17 @@
-@import "./mixin.scss";
-@import "./variables.scss";
+@import './mixin.scss';
+@import './variables.scss';
 
-.modal-bg { 
+.modal-bg {
     height: 100vh;
-    width: 100vw;
+    width: 75vw;
     top: 0;
     left: 0;
     position: fixed;
-    animation: modalBG forwards 0.5s ease-in-out
+    animation: modalBG forwards 0.5s ease-in-out;
 }
 
 .modal-wrapper {
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -20,7 +20,7 @@
     height: 90vh;
     width: 90vw;
     position: fixed;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
@@ -48,7 +48,8 @@
 }
 
 .fake-filters {
-    width: 60%;
+    width: 100%;
+    margin-left: 2rem;
     img {
         width: 100%;
         object-fit: cover;
@@ -67,7 +68,7 @@
 
 .product-side {
     margin: 0 auto;
-    width: 80%;
+    width: 35%;
 }
 
 .modal-images {
@@ -76,7 +77,7 @@
     width: 100%;
 
     img {
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -100,6 +101,29 @@
         &:hover {
             @include btn-hover;
         }
+    }
+    .modal-infos__grame-prod {
+        display: flex;
+        justify-content: space-between;
+        .modal-infos__grame-prod__id {
+            color: $heigth-color;
+        }
+        .modal-infos__grame-prod__gram {
+            color: $heigth-color;
+        }
+    }
+    .modal-infos__grame-prod__prices {
+        .modal-infos__grame-prod__prices__price {
+            color: $heigth-color;
+            font-size: 2em;
+        }
+    }
+    .line {
+        border-bottom: 1px solid $heigth-color;
+        width: 100%;
+    }
+    .modal-infos__grame-prod__img {
+        width: 25%;
     }
 }
 
@@ -130,15 +154,12 @@
 }
 
 @keyframes modalBG {
-    0%{
-       
+    0% {
         background-color: rgba(0, 0, 0, 0);
     }
-    100%{
+    100% {
         background-color: rgba(0, 0, 0, 0.2);
-       
     }
-    
 }
 
 // @keyframes fadeModal {
