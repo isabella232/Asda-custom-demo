@@ -9,7 +9,10 @@ const CarouselHome = () => {
     const { persona } = useSelector(state => state.selectedPersona);
     return (
         <InstantSearch indexName={window.index} searchClient={searchClient}>
-            <Configure hitsPerPage={8} userToken={persona} />
+            <Configure
+                hitsPerPage={8}
+                userToken={persona}
+            />
             <CustomHitsModal />
         </InstantSearch>
     );

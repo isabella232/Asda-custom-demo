@@ -31,6 +31,7 @@ const Homepage = () => {
                 <div>
                     <img src={img1} alt="home" />
                 </div>
+                {persona}
                 <div className="carouselHome">
                     {persona === 'Asda_Tiffany' ? (
                         <h2>Our Organic Products :</h2>
@@ -42,6 +43,8 @@ const Homepage = () => {
                     ) : (
                         ''
                     )}
+                    {persona === null ? <h2>Our Products :</h2> : ''}
+                    {persona === 'Neutral' ? <h2>Our Products :</h2> : ''}
                     <CarouselHome />
                 </div>
                 <div className="carouselHome">

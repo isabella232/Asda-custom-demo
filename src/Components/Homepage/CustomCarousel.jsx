@@ -9,11 +9,19 @@ const CustomCarousel = () => {
     const { persona } = useSelector(state => state.selectedPersona);
     return (
         <InstantSearch indexName={window.index} searchClient={searchClient}>
-            <Configure
-                hitsPerPage={8}
-                userToken={persona}
-                filters="PRICE_INT<5"
-            />
+            {persona === 'Asda_Tiffany' ? (
+                <Configure
+                    hitsPerPage={8}
+                    ruleContexts="custom_carousel"
+                    filters="PRICE_INT<5"
+                />
+            ) : (
+                <Configure
+                    hitsPerPage={8}
+                    userToken={persona}
+                    filters="PRICE_INT<5"
+                />
+            )}
             <CustomHitsModal />
         </InstantSearch>
     );
