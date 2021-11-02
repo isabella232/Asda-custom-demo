@@ -1,13 +1,14 @@
-@import "./mixin.scss";
-@import "./variables.scss";
+@import './mixin.scss';
+@import './variables.scss';
 
-.modal-bg { 
+.modal-bg {
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
     position: fixed;
-    animation: modalBG forwards 0.5s ease-in-out
+    animation: modalBG forwards 0.5s ease-in-out;
+    z-index: 999;
 }
 
 .modal-wrapper {
@@ -47,16 +48,9 @@
     border-radius: 3px;
 }
 
-.fake-filters {
-    width: 60%;
-    img {
-        width: 100%;
-        object-fit: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
+
+  
+
 
 .close-modal {
     position: absolute;
@@ -67,22 +61,24 @@
 
 .product-side {
     margin: 0 auto;
-    width: 80%;
+    width: 45%;
+    display: flex;
+    align-items: center;
+   
 }
 
 .modal-images {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%;
 
     img {
-        width: 90%;
+        width: 100%;
     }
 }
 
 .modal-infos {
-    margin-top: 3rem;
-    width: 80%;
+    width: 50%;
 
     h3,
     p {
@@ -100,6 +96,73 @@
         &:hover {
             @include btn-hover;
         }
+    }
+    .modal-infos__grame-prod {
+        display: flex;
+        justify-content: space-between;
+        .modal-infos__grame-prod__id {
+            color: $heigth-color;
+        }
+        .modal-infos__grame-prod__gram {
+            color: $heigth-color;
+        }
+    }
+
+    .modal-infos__grame-prod__price__wp{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+        .modal-infos__grame-prod__prices__buttons {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 1rem;
+            
+            .modal-infos__grame-prod__prices__buttons__green {
+               @include btn;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               color: white;
+               background-color: $second-color;
+               
+            }
+            .modal-infos__grame-prod__prices__buttons__white {
+                @include btn;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $second-color;
+                
+                svg {
+                    margin-right: 1rem;
+                }
+            }
+            .modal-infos__grame-prod__prices__buttons__green:hover {
+                background-color: white;
+                color: green;
+                border: $second-color solid 1px;
+                transition: 0.2s ease-in-out;
+            }
+        
+        .modal-infos__grame-prod__prices__price {
+            color: $second-color;
+            font-size: 2em;
+            font-weight: bold;
+        }
+       
+    }
+    .line {
+        border-bottom: 1px solid $heigth-color;
+        width: 100%;
+    }
+
+    .modal-infos__grame-prod__wp{
+        width: 10rem;
+    }
+    .modal-infos__grame-prod__img {
+        width: 100%;
     }
 }
 
@@ -130,15 +193,16 @@
 }
 
 @keyframes modalBG {
-    0%{
-       
+    0% {
         background-color: rgba(0, 0, 0, 0);
+        top: 0;
+        left: 0;
     }
-    100%{
+    100% {
         background-color: rgba(0, 0, 0, 0.2);
-       
+        top: 0;
+        left: 0;
     }
-    
 }
 
 // @keyframes fadeModal {

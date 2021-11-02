@@ -87,7 +87,6 @@ const Hits = ({ hits }) => {
                         </motion.li>
                     ))}
                 </ul>
-                <ModalProduct />
             </div>
         </AnimateSharedLayout>
     );
@@ -161,4 +160,4 @@ const ModalProduct = () => {
 const CustomHits = connectHits(Hits);
 const CustomHitsModal = connectHits(HitsModal);
 
-export { CustomHits, CustomHitsModal };
+export { CustomHits, CustomHitsModal, ModalProduct };

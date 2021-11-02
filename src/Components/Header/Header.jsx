@@ -24,10 +24,13 @@ const Header = () => {
     const homepageSelector = useSelector(state => state.visibility.homepage)
     const catTwoSelector = useSelector(state => state.visibility.catTwo)
     const catOneSelector = useSelector(state => state.visibility.catOne)
-    const searchVisibleSelector = useSelector(state => state.visibility.searchVisible)
+    const searchVisibleSelector = useSelector(state => state.visibility.searchVisible)  
+    const {showModal } = useSelector(state => state.productDetail);
+
+
    
 
-    if(federatedSearchVisibleSelector){
+    if(federatedSearchVisibleSelector || showModal ){
         document.body.classList.add('stop-scrolling')
     } else {
         document.body.classList.remove('stop-scrolling')
