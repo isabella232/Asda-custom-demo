@@ -16,6 +16,7 @@ const Homepage = () => {
     const { searchVisible, catOne, catTwo } = useSelector(
         state => state.visibility
     );
+    const { persona } = useSelector(state => state.selectedPersona);
     return (
         <>
             <div
@@ -30,7 +31,16 @@ const Homepage = () => {
                     <img src={img1} alt="home" />
                 </div>
                 <div className="carouselHome">
-                    <h2>Our Products :</h2>
+                    {persona === 'Asda_Tiffany' ? (
+                        <h2>Our Organic Products :</h2>
+                    ) : (
+                        ''
+                    )}
+                    {persona === 'Asda_Ben' ? (
+                        <h2>Our Kellogg's Products :</h2>
+                    ) : (
+                        ''
+                    )}
                     <CarouselHome />
                 </div>
                 <div>
