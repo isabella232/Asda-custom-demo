@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, AnimateSharedLayout } from 'framer-motion';
-import CarouselHome from '../Homepage/Carousel';
+import {CarouselHome} from '../Homepage/Carousel';
 
 import {
     Pagination,

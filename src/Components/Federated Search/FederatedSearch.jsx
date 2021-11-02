@@ -12,7 +12,7 @@ import {
 // COMPONENT IMPORT
 import { CustomHits } from '../Searchpage/Hits';
 import CustomSuggestions from '../Searchpage/Suggestions';
-import CarouselHome from '../Homepage/Carousel';
+import {CarouselHome} from '../Homepage/Carousel';
 import {
     federatedSearchVisible,
     searchVisible
