@@ -52,7 +52,6 @@ const SelectPersona = () => {
 
     return (
         <Select options={options} onChange={selectValue}  styles={colourStyles} placeholder={"Persona"} />
-       
     )
 
 }

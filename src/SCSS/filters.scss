@@ -88,12 +88,21 @@
                 @include btn;
                 display: flex;
                 align-items: center;
+               
                 span{
                     margin-left: 0.5rem;
                 }
             }
         }
     }
+
+    p{
+        color: $sixth-color;
+    }
+    .close-refinment{
+        margin-left: 0.5rem;
+    }
+
 }
 
 .refined-filter{
