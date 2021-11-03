@@ -98,6 +98,7 @@ const Header = () => {
                     }}
                 >
                     <CustomSearchBox />
+                    
                 </div>
             </div>
             <div className="header-down">
