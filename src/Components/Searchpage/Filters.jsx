@@ -45,7 +45,6 @@ const HierarchicalCategoriesFilter = ({ title, items, refine, createURL }) => {
                                 item.isRefined ? 'refined-filter' : ''
                             }`}
                             href={createURL(item.value)}
-                            style={{ fontWeight: item.isRefined ? 'bold' : '' }}
                             onClick={event => {
                                 event.preventDefault();
                                 refine(item.value);
