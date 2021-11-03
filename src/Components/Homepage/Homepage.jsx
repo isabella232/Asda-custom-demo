@@ -31,7 +31,6 @@ const Homepage = () => {
                 <div>
                     <img src={img1} alt="home" />
                 </div>
-                {persona}
                 <div className="carouselHome">
                     {persona === 'Asda_Tiffany' ? (
                         <h2>Our Organic Products :</h2>
