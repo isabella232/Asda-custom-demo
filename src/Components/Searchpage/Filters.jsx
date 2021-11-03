@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+
 // ALGOLIA'S IMPORT
 import {
     connectRefinementList,
     connectHierarchicalMenu,
     connectRange,
-    ExperimentalDynamicWidgets,
-    Configure
+    ExperimentalDynamicWidgets
 } from 'react-instantsearch-dom';
 
 // COMPONENTS IMPORT
@@ -17,11 +18,13 @@ import 'rheostat/initialize';
 import Rheostat from 'rheostat';
 import 'rheostat/css/rheostat.css';
 
+import { guidedNavigation } from '../../actions/guidedNavigation';
+
 // expects an attribute which is formated as a hierarchy
 // see https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/#hierarchical-facets
 const HierarchicalCategoriesFilter = ({ title, items, refine, createURL }) => {
     const [category, setcategory] = useState(true);
-    console.log('Items', items);
+    const dispatch = useDispatch();
     return (
         <div className="filters-content">
             <div
@@ -47,6 +50,7 @@ const HierarchicalCategoriesFilter = ({ title, items, refine, createURL }) => {
                             href={createURL(item.value)}
                             onClick={event => {
                                 event.preventDefault();
+                                dispatch(guidedNavigation(false));
                                 refine(item.value);
                             }}
                         >
@@ -76,6 +80,7 @@ const HierarchicalMenu = connectHierarchicalMenu(HierarchicalCategoriesFilter);
 // expects an attribute which is an array of items
 const RefinementList = ({ title, items, refine, searchForItems }) => {
     const [showfacet, setshowfacet] = useState(false);
+    const dispatch = useDispatch();
     return (
         <div className="filters-content">
             <div className="title">
@@ -123,6 +128,7 @@ const RefinementList = ({ title, items, refine, searchForItems }) => {
                             href="#"
                             onClick={event => {
                                 event.preventDefault();
+                                dispatch(guidedNavigation(false));
                                 refine(item.value);
                             }}
                         >
@@ -209,6 +215,40 @@ const RangeSlider = ({
 
 const GenericRangeSlider = connectRange(RangeSlider);
 
+// Guided Nav
+const GuidedNavList = ({ items, refine }) => {
+    const dispatch = useDispatch();
+    return (
+        <div>
+            <div className="GuidedNavigation">
+                <ul className="GuidedNavigation-button">
+                    {items.map(item => (
+                        <li className="" key={item.label}>
+                            <button
+                                className={`GuidedNavigation-button ${
+                                    item.isRefined ? 'refined-filter' : ''
+                                }`}
+                                href="#"
+                                onClick={event => {
+                                    event.preventDefault();
+                                    dispatch(guidedNavigation(true));
+                                    refine(item.value);
+                                }}
+                            >
+                                {item.label[0].toUpperCase() +
+                                    item.label.slice(1).toLowerCase()}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+                <div className="line"></div>
+            </div>
+        </div>
+    );
+};
+
+const GuidedNavRefinementList = connectRefinementList(GuidedNavList);
+
 // MAIN COMPONENT
 const CustomFilters = ({ filterAnim }) => {
     return (
@@ -248,4 +288,9 @@ const CustomFilters = ({ filterAnim }) => {
         </div>
     );
 };
-export { CustomFilters };
+
+const GuidedNavigationComponent = () => (
+    <GuidedNavRefinementList attribute="flat_categories" limit="5" />
+);
+
+export { CustomFilters, GuidedNavigationComponent };
