@@ -21,7 +21,7 @@ const store = createStore(
 //CHANGE ME IF USING NEW INDEX
 window.appID = 'T28VFYO9RS';
 window.key = 'd51558b9d3daea110f05e8c1a7b65253';
-window.index = 'Asda_v2';
+window.index = 'Asda_v3';
 
 //SORTBY
 window.index_asc = 'Asda_v2_price_asc';
