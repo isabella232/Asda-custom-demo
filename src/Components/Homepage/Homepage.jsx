@@ -10,7 +10,7 @@ import img4 from '../../Assets/Images/img4.png';
 import img5 from '../../Assets/Images/img5.png';
 import footer from '../../Assets/Images/footer.png';
 
-import {CarouselHome, CarouselLowPrice} from './Carousel';
+import { CarouselHome, CarouselLowPrice } from './Carousel';
 import CustomCarousel from './CustomCarousel';
 
 const Homepage = () => {
@@ -32,18 +32,7 @@ const Homepage = () => {
                     <img src={img1} alt="home" />
                 </div>
                 <div className="carouselHome">
-                    {persona === 'Asda_Tiffany' ? (
-                        <h2>Our Organic Products :</h2>
-                    ) : (
-                        ''
-                    )}
-                    {persona === 'Asda_Ben' ? (
-                        <h2>Our Kellogg's Products :</h2>
-                    ) : (
-                        ''
-                    )}
-                    {persona === null ? <h2>Our Products :</h2> : ''}
-                    {persona === 'Neutral' ? <h2>Our Products :</h2> : ''}
+                    <h2>Our ASDA Products</h2>
                     <CarouselHome />
                 </div>
                 <div className="carouselHome">

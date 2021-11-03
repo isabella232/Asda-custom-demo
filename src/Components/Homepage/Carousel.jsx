@@ -9,25 +9,18 @@ export const CarouselHome = () => {
     const { persona } = useSelector(state => state.selectedPersona);
     return (
         <InstantSearch indexName={window.index} searchClient={searchClient}>
-            <Configure
-                hitsPerPage={8}
-                userToken={persona} 
-            />
+            <Configure hitsPerPage={8} filters="BRAND:ASDA" />
             <CustomHitsModal />
         </InstantSearch>
     );
 };
 
 export const CarouselLowPrice = () => {
-    const {persona} = useSelector(state => state.selectedPersona)
-    return (    
-    <Index
-        indexName={window.index}    
-        indexId= "lowPrice_carousel">
-        <Configure ruleContexts='lowPrice' userToken={persona} />
-        <CustomHitsModal />
-    </Index> );
-}
-
-
-
+    const { persona } = useSelector(state => state.selectedPersona);
+    return (
+        <Index indexName={window.index} indexId="lowPrice_carousel">
+            <Configure ruleContexts="lowPrice" userToken={persona} />
+            <CustomHitsModal />
+        </Index>
+    );
+};
