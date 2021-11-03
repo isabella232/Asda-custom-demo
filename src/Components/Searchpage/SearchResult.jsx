@@ -20,7 +20,11 @@ import {
 
 //COMPONENTS
 import { CustomHits, ModalProduct } from './Hits';
-import { CustomFilters, DynamicFacets } from './Filters';
+import {
+    CustomFilters,
+    DynamicFacets,
+    GuidedNavigationComponent
+} from './Filters';
 import CustomSearchBox from './SearchBox';
 import VirtualSearchBox from './VirtualSearchBox';
 import ProductDetails from '../ProductsDetails/ProductsDetails';
@@ -54,6 +58,7 @@ const SearchResults = () => {
     const { query } = useSelector(state => state.getQuery);
     const { showModal } = useSelector(state => state.productDetail);
     const { persona } = useSelector(state => state.selectedPersona);
+    const { guidedNavigation } = useSelector(state => state.selectedPersona);
 
     // REACT STATE
     const [filterAnim, setFilterAnim] = useState(true);
@@ -158,14 +163,20 @@ const SearchResults = () => {
                                 hitsPerPage={21}
                             />
                             <Results>
+                                <GuidedNavigationComponent />
                                 <SortAndStat />
-                                <CustomCurrentRefinements
-                                    transformItems={items =>
-                                        items.filter(
-                                            item => item.attribute !== 'price'
-                                        )
-                                    }
-                                />
+                                {!guidedNavigation ? (
+                                    <CustomCurrentRefinements
+                                        transformItems={items =>
+                                            items.filter(
+                                                item =>
+                                                    item.attribute !== 'price'
+                                            )
+                                        }
+                                    />
+                                ) : (
+                                    ''
+                                )}
                                 <CustomHits />
                             </Results>
                         </div>
@@ -285,7 +296,11 @@ const CurrentRefinements = ({ items, refine }) => {
                                     refine(item.value);
                                 }}
                             >
-                                {item.attribute === "PRICE_INT" ? (<p>{item.label}</p>) : (<p>{item.currentRefinement}</p>)}    
+                                {item.attribute === 'PRICE_INT' ? (
+                                    <p>{item.label}</p>
+                                ) : (
+                                    <p>{item.currentRefinement}</p>
+                                )}
                                 <span
                                     className="close-refinment"
                                     onClick={() => {

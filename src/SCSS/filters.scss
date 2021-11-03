@@ -302,3 +302,25 @@
 .refinement-count {
     color: $second-color;
 }
+
+.GuidedNavigation {
+    .GuidedNavigation-button {
+        display: flex;
+        justify-content: center;
+        li {
+            button {
+                background-color: white;
+                border: #f2f2f2 1px solid;
+                padding: 0.8rem 0.5rem;
+                border-radius: 20px;
+                margin: 0 1rem 1rem 0;
+                cursor: pointer;
+                min-width: 9rem;
+            }
+            button:hover {
+                border: $second-color 1px solid;
+                background-color: rgba(63, 193, 80, 0.1);
+            }
+        }
+    }
+}
