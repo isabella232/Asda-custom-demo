@@ -285,8 +285,7 @@ const CurrentRefinements = ({ items, refine }) => {
                                     refine(item.value);
                                 }}
                             >
-                                {item.attribute === "PRICE_INT" ? (<p>{item.label}</p>) : (<p>{item.currentRefinement}</p>)}
-                                
+                                {item.attribute === "PRICE_INT" ? (<p>{item.label}</p>) : (<p>{item.currentRefinement}</p>)}    
                                 <span
                                     className="close-refinment"
                                     onClick={() => {
