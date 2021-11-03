@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, AnimateSharedLayout } from 'framer-motion';
-import {CarouselHome} from '../Homepage/Carousel';
+import { CarouselNoResults } from '../Homepage/Carousel';
 
 import {
     Pagination,
@@ -29,7 +29,6 @@ import CustomSuggestions from './Suggestions';
 import FederatedSearch from '../Federated Search/FederatedSearch';
 import { showModalPDP } from '../../actions/productDetail';
 import { federatedSearchVisible } from '../../actions/visibility';
-
 
 // UNIQBY LIB
 import uniqBy from 'lodash.uniqby';
@@ -167,8 +166,7 @@ const SearchResults = () => {
                                         )
                                     }
                                 />
-
-                                <CustomHits  />
+                                <CustomHits />
                             </Results>
                         </div>
                     </div>
@@ -242,7 +240,7 @@ const FilterBtn = ({ filterAnim, setFilterAnim }) => {
 
 const CurrentRefinements = ({ items, refine }) => {
     const unique = uniqBy(items, 'currentRefinement');
-    console.log(items)
+    console.log(items);
 
     return (
         <ul className="refinement-content">
@@ -279,18 +277,25 @@ const CurrentRefinements = ({ items, refine }) => {
                         </React.Fragment>
                     ) : (
                         <>
-                        <a
-                            className="refinement-filter"
-                            href="#"
-                            onClick={event => {
-                                event.preventDefault();
-                                refine(item.value);
-                            }}>
-                            <p>{item.currentRefinement}</p>
-                            <span className="close-refinment" onClick={() => {refine(item.value);}}>X</span>
-                        </a>
-                     
-                     </>
+                            <a
+                                className="refinement-filter"
+                                href="#"
+                                onClick={event => {
+                                    event.preventDefault();
+                                    refine(item.value);
+                                }}
+                            >
+                                <p>{item.currentRefinement}</p>
+                                <span
+                                    className="close-refinment"
+                                    onClick={() => {
+                                        refine(item.value);
+                                    }}
+                                >
+                                    X
+                                </span>
+                            </a>
+                        </>
                     )}
                 </li>
             ))}
@@ -308,7 +313,7 @@ const Results = connectStateResults(
             <div className="no-results-hits">
                 <h3>NO RESULTS FOUND for {searchState.query}.</h3>
                 <p>You can look at our product suggestion below </p>
-                <CarouselHome />
+                <CarouselNoResults />
             </div>
         )
 );

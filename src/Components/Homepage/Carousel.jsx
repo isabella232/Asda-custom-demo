@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 export const CarouselHome = () => {
     const searchClient = algoliasearch(window.appID, window.key);
-    const { persona } = useSelector(state => state.selectedPersona);
     return (
         <InstantSearch indexName={window.index} searchClient={searchClient}>
             <Configure hitsPerPage={8} filters="BRAND:ASDA" />
@@ -22,5 +21,16 @@ export const CarouselLowPrice = () => {
             <Configure ruleContexts="lowPrice" userToken={persona} />
             <CustomHitsModal />
         </Index>
+    );
+};
+
+export const CarouselNoResults = () => {
+    const searchClient = algoliasearch(window.appID, window.key);
+    const { persona } = useSelector(state => state.selectedPersona);
+    return (
+        <InstantSearch indexName={window.index} searchClient={searchClient}>
+            <Configure hitsPerPage={8} userToken={persona} />
+            <CustomHitsModal />
+        </InstantSearch>
     );
 };
