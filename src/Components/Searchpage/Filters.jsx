@@ -235,7 +235,8 @@ const GuidedNavList = ({ items, refine }) => {
                                     refine(item.value);
                                 }}
                             >
-                                {item.label}
+                                {item.label[0].toUpperCase() +
+                                    item.label.slice(1).toLowerCase()}
                             </button>
                         </li>
                     ))}
@@ -289,7 +290,7 @@ const CustomFilters = ({ filterAnim }) => {
 };
 
 const GuidedNavigationComponent = () => (
-    <GuidedNavRefinementList attribute="DISPLAY_NAME" limit="5" />
+    <GuidedNavRefinementList attribute="flat_categories" limit="5" />
 );
 
 export { CustomFilters, GuidedNavigationComponent };

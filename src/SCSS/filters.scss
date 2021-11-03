@@ -307,15 +307,17 @@
     .GuidedNavigation-button {
         display: flex;
         justify-content: center;
+        margin-top: -1.7rem;
         li {
             button {
                 background-color: white;
                 border: #f2f2f2 1px solid;
-                padding: 0.8rem 0.5rem;
-                border-radius: 20px;
+                padding: 0.5rem 0.2rem;
+                // border-radius: 20px;
                 margin: 0 1rem 1rem 0;
                 cursor: pointer;
-                min-width: 9rem;
+                min-width: 7rem;
+                font-size: 10px;
             }
             button:hover {
                 border: $second-color 1px solid;
