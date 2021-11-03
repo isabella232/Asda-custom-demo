@@ -310,14 +310,13 @@
         margin-top: -1.7rem;
         li {
             button {
-                background-color: white;
+                background-color: #f2f2f2;
                 border: #f2f2f2 1px solid;
-                padding: 0.5rem 0.2rem;
-                // border-radius: 20px;
-                margin: 0 1rem 1rem 0;
+                padding: 0.5rem 0.5rem;
+                margin: 0 1rem 2rem 0;
                 cursor: pointer;
-                min-width: 7rem;
-                font-size: 10px;
+                font-size: 0.8rem;
+                color: #2e2c2c;
             }
             button:hover {
                 border: $second-color 1px solid;
