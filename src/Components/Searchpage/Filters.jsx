@@ -290,7 +290,7 @@ const CustomFilters = ({ filterAnim }) => {
 };
 
 const GuidedNavigationComponent = () => (
-    <GuidedNavRefinementList attribute="flat_categories" limit="5" />
+    <GuidedNavRefinementList attribute="flat_categories" limit={5} />
 );
 
 export { CustomFilters, GuidedNavigationComponent };
