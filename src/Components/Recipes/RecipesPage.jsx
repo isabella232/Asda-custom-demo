@@ -3,7 +3,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { useSelector } from 'react-redux';
 import {
     Configure,
-    InstantSearch,
+    Index,
     Hits,
     connectHits,
     Highlight,
@@ -18,17 +18,14 @@ const RecipesPage = () => {
         <div className="recipes-page">
             <h3>Recipe categories</h3>
             {query ? <p>For {query}</p> : ''}
-            <InstantSearch
-                indexName={window.recipeIndex}
-                searchClient={searchClient}
-            >
+            <Index indexName={window.recipeIndex}>
                 <Configure
                     enablePersonalization={true}
                     hitsPerPage={20}
                     query={query}
                 />
                 <CustomHitsRecipe />
-            </InstantSearch>
+            </Index>
         </div>
     );
 };
