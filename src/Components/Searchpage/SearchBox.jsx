@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     connectSearchBox,
     VoiceSearch,
-    connectCurrentRefinements
 } from 'react-instantsearch-dom';
 import { getQuery, getInput } from '../../actions/getQuery';
 import {

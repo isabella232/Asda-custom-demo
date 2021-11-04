@@ -23,7 +23,7 @@ import { CustomHits, ModalProduct } from './Hits';
 import {
     CustomFilters,
     DynamicFacets,
-    GuidedNavigationComponent
+    GuidedNavRefinementList
 } from './Filters';
 import CustomSearchBox from './SearchBox';
 import VirtualSearchBox from './VirtualSearchBox';
@@ -163,7 +163,8 @@ const SearchResults = () => {
                                 hitsPerPage={21}
                             />
                             <Results>
-                                <GuidedNavigationComponent />
+                                
+                                <GuidedNavRefinementList attribute="flat_categories" limit={5} />
                                 <SortAndStat />
                                 {!guidedNavigation ? (
                                     <CustomCurrentRefinements
@@ -251,8 +252,6 @@ const FilterBtn = ({ filterAnim, setFilterAnim }) => {
 
 const CurrentRefinements = ({ items, refine }) => {
     const unique = uniqBy(items, 'currentRefinement');
-    console.log(items);
-
     return (
         <ul className="refinement-content">
             {unique.map(item => (
