@@ -1,18 +1,10 @@
 import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { useSelector } from 'react-redux';
-import {
-    Configure,
-    Index,
-    Hits,
-    connectHits,
-    Highlight,
-    connectStateResults
-} from 'react-instantsearch-dom';
+import { Configure, Index } from 'react-instantsearch-dom';
 import { CustomHitsRecipe } from '../Searchpage/Hits';
 
 const RecipesPage = () => {
-    const searchClient = algoliasearch(window.appID, window.key);
     const { query } = useSelector(state => state.getQuery);
     return (
         <div className="recipes-page">
