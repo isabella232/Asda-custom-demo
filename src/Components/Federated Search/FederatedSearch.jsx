@@ -136,4 +136,7 @@ const ResultsTitle = connectStateResults(({ searchResults, children }) =>
     searchResults && searchResults.nbHits !== 0 ? children : ''
 );
 
+ 
+
+
 export default FederatedSearch;

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // ALGOLIA'S IMPORT
-import { connectSearchBox, VoiceSearch } from 'react-instantsearch-dom';
+import { connectSearchBox, VoiceSearch, connectStateResults } from 'react-instantsearch-dom';
 import { getQuery, getInput } from '../../actions/getQuery';
 import {
     searchVisible,
@@ -13,6 +13,7 @@ const SearchBox = ({ refine }) => {
     const dispatch = useDispatch();
     const { query, input } = useSelector(state => state.getQuery);
     const inputRef = useRef();
+    console.log(query)
     return (
         <div className="searchBox-wrapper">
             <form
@@ -31,10 +32,11 @@ const SearchBox = ({ refine }) => {
                     id="input-search2"
                     ref={inputRef}
                     type="search"
-                    value={query}
+                    // value={query}
                     onChange={event => {
                         dispatch(getQuery(event.currentTarget.value));
                         refine(event.currentTarget.value);
+                       
                     }}
                     placeholder="Search..."
                     autoFocus={true}
@@ -56,6 +58,7 @@ const SearchBox = ({ refine }) => {
             </form>
             <div className="voiceSearch__wrapper">
                 <VoiceSearch searchAsYouSpeak={false} language={'en-US'} />
+                
             </div>
         </div>
     );
@@ -71,5 +74,11 @@ const StoreQueryToLocalStorage = query => {
     let deduplicateSearches = [...new Set(cleanArray)];
     localStorage.setItem('recentSearches', JSON.stringify(deduplicateSearches));
 };
+
+
+
+
+    
+
 
 export default CustomSearchBox;

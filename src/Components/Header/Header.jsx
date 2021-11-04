@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Configure } from 'react-instantsearch-dom';
+
 // COMPONENT IMPORT
 import logo from '../../Assets/Images/logo.png';
 import CustomSearchBox from '../Searchpage/SearchBox';
@@ -17,11 +19,11 @@ import { getQuery } from '../../actions/getQuery';
 import { guidedNavigation } from '../../actions/guidedNavigation';
 
 const Header = () => {
+    const dispatch = useDispatch();
     const federatedSearchVisibleSelector = useSelector(
         state => state.visibility.federatedSearchVisible
     );
-
-    const dispatch = useDispatch();
+    const { query } = useSelector(state => state.getQuery);
     const homepageSelector = useSelector(state => state.visibility.homepage);
     const catTwoSelector = useSelector(state => state.visibility.catTwo);
     const catOneSelector = useSelector(state => state.visibility.catOne);

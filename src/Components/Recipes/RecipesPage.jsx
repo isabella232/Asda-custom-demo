@@ -25,7 +25,7 @@ const RecipesPage = () => {
                 <Configure
                     enablePersonalization={true}
                     hitsPerPage={20}
-                    query={query}
+                    // query={query}
                 />
                 <CustomHitsRecipe />
             </InstantSearch>

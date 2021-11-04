@@ -28,7 +28,7 @@ const RecipesSearch = () => {
                 <Configure
                     enablePersonalization={true}
                     hitsPerPage={1}
-                    query={query}
+                    // query={query}
                 />
                 <ResultsTitle>
                     <h3>We have found a recipe to please you</h3>
