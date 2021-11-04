@@ -22,6 +22,7 @@ const store = createStore(
 window.appID = 'T28VFYO9RS';
 window.key = 'd51558b9d3daea110f05e8c1a7b65253';
 window.index = 'Asda_v3';
+window.recipeIndex = 'Asda_recipes';
 
 //SORTBY
 window.index_asc = 'Asda_v2_price_asc';
@@ -46,8 +47,8 @@ window.hierarchicalCategoriesAttribute = [
     'categories.lvl0',
     'categories.lvl1',
     'categories.lvl2',
-    'categories.lvl3',
-  ];
+    'categories.lvl3'
+];
 
 ReactDOM.render(
     <Provider store={store}>

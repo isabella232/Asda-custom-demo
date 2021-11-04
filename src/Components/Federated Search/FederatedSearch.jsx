@@ -12,7 +12,8 @@ import {
 // COMPONENT IMPORT
 import { CustomHits } from '../Searchpage/Hits';
 import CustomSuggestions from '../Searchpage/Suggestions';
-import {CarouselHome} from '../Homepage/Carousel';
+import { CarouselHome } from '../Homepage/Carousel';
+import RecipesSearch from './RecipesSearch';
 import {
     federatedSearchVisible,
     searchVisible
@@ -22,12 +23,20 @@ import { getQuery } from '../../actions/getQuery';
 const FederatedSearch = () => {
     const { persona } = useSelector(state => state.selectedPersona);
     const { shop } = useSelector(state => state.selectShop);
+    const { query } = useSelector(state => state.getQuery);
     return (
         <div className="federatedSearch">
             <div className="federatedSearch-wrapper">
                 <div className="federatedSearch-recentSearches">
                     <RecentSearches />
                     <ContentInjected />
+                    {query ? (
+                        <div className="recipes-content">
+                            <RecipesSearch />
+                        </div>
+                    ) : (
+                        ''
+                    )}
                 </div>
 
                 <div className="federatedSearch-products">
