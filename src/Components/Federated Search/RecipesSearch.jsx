@@ -7,7 +7,8 @@ import {
     InstantSearch,
     connectHits,
     Highlight,
-    connectStateResults
+    connectStateResults,
+    Index
 } from 'react-instantsearch-dom';
 import {
     searchVisible,
@@ -21,10 +22,7 @@ const RecipesSearch = () => {
     const { query } = useSelector(state => state.getQuery);
     return (
         <div>
-            <InstantSearch
-                indexName={window.recipeIndex}
-                searchClient={searchClient}
-            >
+            <Index indexName={window.recipeIndex}>
                 <Configure
                     enablePersonalization={true}
                     hitsPerPage={1}
@@ -44,7 +42,7 @@ const RecipesSearch = () => {
                 >
                     Show More Recipes
                 </button>
-            </InstantSearch>
+            </Index>
         </div>
     );
 };
