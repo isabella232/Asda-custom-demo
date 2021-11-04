@@ -6,7 +6,8 @@ import {
     Configure,
     InstantSearch,
     connectHits,
-    Highlight
+    Highlight,
+    connectStateResults
 } from 'react-instantsearch-dom';
 
 const RecipesSearch = () => {
@@ -14,7 +15,6 @@ const RecipesSearch = () => {
     const { query } = useSelector(state => state.getQuery);
     return (
         <div>
-            <h3>We have found recipes to please you</h3>
             <InstantSearch
                 indexName={window.recipeIndex}
                 searchClient={searchClient}
@@ -24,6 +24,9 @@ const RecipesSearch = () => {
                     hitsPerPage={3}
                     query={query}
                 />
+                <ResultsTitle>
+                    <h3>We have found recipes to please you</h3>
+                </ResultsTitle>
                 <CustomHitsModal />
             </InstantSearch>
         </div>
@@ -37,7 +40,7 @@ const HitsModal = ({ hits }) => {
                 {hits.map(hit => (
                     <li
                         key={hit.objectID}
-                        className="hit-list"
+                        className="hit-list recipes-list"
                         onClick={() => {
                             window.location.href = `${hit.url}`;
                         }}
@@ -50,18 +53,7 @@ const HitsModal = ({ hits }) => {
                             <h3>
                                 <Highlight hit={hit} attribute="recipe_title" />
                             </h3>
-                            <p>
-                                {hit.recipe_descriptioni.length < 100
-                                    ? hit.recipe_descriptioni
-                                    : `${hit.recipe_descriptioni.substring(
-                                          0,
-                                          50
-                                      )}...`}
-                            </p>
                             <br />
-                            <p className="ingredients">
-                                {hit.recipe_ingredients}
-                            </p>
                         </div>
                     </li>
                 ))}
@@ -71,5 +63,9 @@ const HitsModal = ({ hits }) => {
 };
 
 const CustomHitsModal = connectHits(HitsModal);
+
+const ResultsTitle = connectStateResults(({ searchResults, children }) =>
+    searchResults && searchResults.nbHits !== 0 ? children : ''
+);
 
 export default RecipesSearch;
