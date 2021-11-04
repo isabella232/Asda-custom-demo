@@ -127,9 +127,34 @@
 }
 
 .federatedSearch-recentSearches {
-    width: 25%;
+    // width: 25%;
 }
 
-.recipes-list{
+.recipes-content {
+    text-align: center;
+}
+
+.recipes-list {
     padding: 0.5rem !important;
+    margin: 0 auto !important;
+}
+
+.recipes-button {
+    border: 1 px solid #f2f2f2;
+    text-decoration: none;
+    color: #0073b1;
+    width: 100%;
+    display: flex;
+    margin: 0.5rem 0;
+    padding: 0.8em;
+    font-size: 0.8rem;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #68a51c;
+    border: none;
 }

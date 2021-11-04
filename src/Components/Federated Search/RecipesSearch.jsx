@@ -9,8 +9,14 @@ import {
     Highlight,
     connectStateResults
 } from 'react-instantsearch-dom';
+import {
+    searchVisible,
+    federatedSearchVisible,
+    recipesPage
+} from '../../actions/visibility';
 
 const RecipesSearch = () => {
+    const dispatch = useDispatch();
     const searchClient = algoliasearch(window.appID, window.key);
     const { query } = useSelector(state => state.getQuery);
     return (
@@ -21,13 +27,23 @@ const RecipesSearch = () => {
             >
                 <Configure
                     enablePersonalization={true}
-                    hitsPerPage={3}
+                    hitsPerPage={1}
                     query={query}
                 />
                 <ResultsTitle>
-                    <h3>We have found recipes to please you</h3>
+                    <h3>We have found a recipe to please you</h3>
                 </ResultsTitle>
                 <CustomHitsModal />
+                <button
+                    className="recipes-button"
+                    onClick={() => {
+                        dispatch(searchVisible(false));
+                        dispatch(recipesPage(true));
+                        dispatch(federatedSearchVisible(false));
+                    }}
+                >
+                    Show More Recipes
+                </button>
             </InstantSearch>
         </div>
     );

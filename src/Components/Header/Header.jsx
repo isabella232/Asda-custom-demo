@@ -10,7 +10,8 @@ import {
     searchVisible,
     federatedSearchVisible,
     catOne,
-    catTwo
+    catTwo,
+    recipesPage
 } from '../../actions/visibility';
 import { getQuery } from '../../actions/getQuery';
 import { guidedNavigation } from '../../actions/guidedNavigation';
@@ -24,6 +25,9 @@ const Header = () => {
     const homepageSelector = useSelector(state => state.visibility.homepage);
     const catTwoSelector = useSelector(state => state.visibility.catTwo);
     const catOneSelector = useSelector(state => state.visibility.catOne);
+    const recipesPageSelector = useSelector(
+        state => state.visibility.recipesPage
+    );
     const searchVisibleSelector = useSelector(
         state => state.visibility.searchVisible
     );
@@ -116,6 +120,8 @@ const Header = () => {
                             dispatch(catTwo(false));
                             dispatch(federatedSearchVisible(false));
                             dispatch(guidedNavigation(false));
+                            dispatch(getQuery(''));
+                            dispatch(recipesPage(''));
                         }}
                     />
                 </div>
@@ -184,7 +190,18 @@ const Header = () => {
                     >
                         Favourites
                     </li>
-                    <li>Meal Planning</li>
+                    <li
+                        onClick={() => {
+                            dispatch(catOne(false));
+                            dispatch(searchVisible(false));
+                            dispatch(catTwo(false));
+                            dispatch(recipesPage(true));
+                            dispatch(federatedSearchVisible(false));
+                            dispatch(getQuery(''));
+                        }}
+                    >
+                        Our recipes
+                    </li>
                     <li>Delivery Pass</li>
                     <li>RollBack</li>
                     <li>Bonfire Night</li>

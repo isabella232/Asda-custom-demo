@@ -3,6 +3,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, AnimateSharedLayout } from 'framer-motion';
 import { CarouselNoResults } from '../Homepage/Carousel';
+import RecipesPage from '../Recipes/RecipesPage';
 
 import {
     Pagination,
@@ -49,7 +50,8 @@ const SearchResults = () => {
         catOne,
         catMens,
         catKids,
-        homepage
+        homepage,
+        recipesPage
     } = useSelector(state => state.visibility);
     const federatedvisble = useSelector(
         state => state.visibility.federatedSearchVisible
@@ -66,7 +68,12 @@ const SearchResults = () => {
 
     return (
         <div className="searchResult-wrapper">
-            {catOne || catTwo || catMens || catKids || homepage ? (
+            {catOne ||
+            catTwo ||
+            catMens ||
+            catKids ||
+            homepage ||
+            recipesPage ? (
                 <div
                     className={`container-federated 
                 ${federatedvisble ? 'active' : 'hidden'}`}
@@ -93,7 +100,7 @@ const SearchResults = () => {
             ) : null}
             <div
                 className={`container ${
-                    searchVisible || catOne || catTwo || catMens || catKids
+                    searchVisible || catOne || catTwo || recipesPage || catKids
                         ? 'active'
                         : 'hidden'
                 }`}
@@ -116,76 +123,84 @@ const SearchResults = () => {
                         <CustomSuggestions attribute="title" />
                     </Index> */}
                     <Banner />
+                    {!recipesPage ? (
+                        <>
+                            <div className="searchPanel-results">
+                                {catOne ? (
+                                    <Configure
+                                        userToken={persona}
+                                        filters="categories.lvl0:'drinks'"
+                                        enablePersonalization={true}
+                                        hitsPerPage={21}
+                                    />
+                                ) : (
+                                    ''
+                                )}
+                                {catTwo ? (
+                                    <Configure
+                                        userToken={persona}
+                                        filters="categories.lvl0:'fresh-food-bakery'"
+                                        enablePersonalization={true}
+                                        hitsPerPage={21}
+                                    />
+                                ) : (
+                                    ''
+                                )}
 
-                    <div className="searchPanel-results">
-                        {catOne ? (
-                            <Configure
-                                userToken={persona}
-                                filters="categories.lvl0:'drinks'"
-                                enablePersonalization={true}
-                                hitsPerPage={21}
-                            />
-                        ) : (
-                            ''
-                        )}
-                        {catTwo ? (
-                            <Configure
-                                userToken={persona}
-                                filters="categories.lvl0:'fresh-food-bakery'"
-                                enablePersonalization={true}
-                                hitsPerPage={21}
-                            />
-                        ) : (
-                            ''
-                        )}
-
-                        {/* {searchVisible ? ( <Configure
+                                {/* {searchVisible ? ( <Configure
                                 userToken={persona}
                                 enablePersonalization={true}
                                 hitsPerPage={21}
                                 query={query}
                             />): ('')} */}
 
-                        <FilterBtn
-                            filterAnim={filterAnim}
-                            setFilterAnim={setFilterAnim}
-                        />
-                        <CustomFilters
-                            filterAnim={filterAnim}
-                            isDynamicFactesOn={isDynamicFactesOn}
-                            setIsDynamicFactesOn={setIsDynamicFactesOn}
-                        />
-                        <div className="hits-panel-wrapper">
-                            <Configure
-                                userToken={persona}
-                                enablePersonalization={true}
-                                query={query}
-                                hitsPerPage={21}
-                            />
-                            <Results>
-                                
-                                <GuidedNavRefinementList attribute="flat_categories" limit={5} />
-                                <SortAndStat />
-                                {!guidedNavigation ? (
-                                    <CustomCurrentRefinements
-                                        transformItems={items =>
-                                            items.filter(
-                                                item =>
-                                                    item.attribute !== 'price'
-                                            )
-                                        }
+                                <FilterBtn
+                                    filterAnim={filterAnim}
+                                    setFilterAnim={setFilterAnim}
+                                />
+                                <CustomFilters
+                                    filterAnim={filterAnim}
+                                    isDynamicFactesOn={isDynamicFactesOn}
+                                    setIsDynamicFactesOn={setIsDynamicFactesOn}
+                                />
+                                <div className="hits-panel-wrapper">
+                                    <Configure
+                                        userToken={persona}
+                                        enablePersonalization={true}
+                                        query={query}
+                                        hitsPerPage={21}
                                     />
-                                ) : (
-                                    ''
-                                )}
-                                <CustomHits />
-                            </Results>
-                        </div>
-                    </div>
-                    <ModalProduct />
-                    <div className="pagination">
-                        <Pagination />
-                    </div>
+                                    <Results>
+                                        <GuidedNavRefinementList
+                                            attribute="flat_categories"
+                                            limit={5}
+                                        />
+                                        <SortAndStat />
+                                        {!guidedNavigation ? (
+                                            <CustomCurrentRefinements
+                                                transformItems={items =>
+                                                    items.filter(
+                                                        item =>
+                                                            item.attribute !==
+                                                            'price'
+                                                    )
+                                                }
+                                            />
+                                        ) : (
+                                            ''
+                                        )}
+                                        <CustomHits />
+                                    </Results>
+                                </div>
+                            </div>
+                            <ModalProduct />
+                            <div className="pagination">
+                                <Pagination />
+                            </div>
+                        </>
+                    ) : (
+                        <RecipesPage />
+                    )}
                 </div>
             </div>
         </div>
