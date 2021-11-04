@@ -229,7 +229,7 @@ const GuidedNavList = ({ items, refine }) => {
                                     item.isRefined ? 'refined-filter' : ''
                                 }`}
                                 href="#"
-                                onClick={event => {
+                                onClick={(event) => {
                                     event.preventDefault();
                                     dispatch(guidedNavigation(true));
                                     refine(item.value);
@@ -289,8 +289,8 @@ const CustomFilters = ({ filterAnim }) => {
     );
 };
 
-const GuidedNavigationComponent = () => (
-    <GuidedNavRefinementList attribute="flat_categories" limit="5" />
-);
 
-export { CustomFilters, GuidedNavigationComponent };
+
+
+
+export { CustomFilters, GuidedNavRefinementList };

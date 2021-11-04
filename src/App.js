@@ -1,6 +1,7 @@
 import React from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
+import {VoiceSearch} from 'react-instantsearch-dom';
 
 //CSS / SCSS
 
