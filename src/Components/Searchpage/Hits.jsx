@@ -159,7 +159,6 @@ const ModalProduct = () => {
 
 const HitsRecipe = ({ hits }) => {
     const { query } = useSelector(state => state.getQuery);
-    console.log('hits', hits);
     if (hits) {
         return (
             <div className="recipes-list">
