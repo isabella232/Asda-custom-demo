@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     connectSearchBox,
     VoiceSearch,
+    connectStateResults
 } from 'react-instantsearch-dom';
 import { getQuery, getInput } from '../../actions/getQuery';
 import {
@@ -14,7 +15,7 @@ import {
 
 
 
-const SearchBox = ({ refine }) => {
+const SearchBox = ({ refine, currentRefinement }) => {
     const dispatch = useDispatch();
     const { query, input } = useSelector(state => state.getQuery);
     const inputRef = useRef();
@@ -28,8 +29,8 @@ const SearchBox = ({ refine }) => {
                         e.preventDefault();
                         dispatch(federatedSearchVisible(false));
                         dispatch(searchVisible(true));
-                        dispatch(getQuery(query));
                         StoreQueryToLocalStorage(query)
+                        dispatch(getQuery(query));
                     }}
                     autoComplete="off"
                 >
@@ -39,7 +40,7 @@ const SearchBox = ({ refine }) => {
                         type="search"
                         value={query}
                         onChange={event => {
-                            dispatch(getQuery(event.currentTarget.value));
+                            // dispatch(getQuery(event.currentTarget.value));
                             refine(event.currentTarget.value);
                         }}
                         placeholder="Search..."
@@ -62,6 +63,7 @@ const SearchBox = ({ refine }) => {
                 </form>
                 <div className="voiceSearch__wrapper">
                     <VoiceSearch searchAsYouSpeak={false} language={'en-US'} />
+                    <CustomStateResults/>
                 </div>
             </div>
           
@@ -82,5 +84,16 @@ const StoreQueryToLocalStorage = (query) => {
     let deduplicateSearches = [...new Set(cleanArray)];
     localStorage.setItem('recentSearches', JSON.stringify(deduplicateSearches));
 }
+
+const StateResults = ({ searchState }) => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        console.log(searchState.query)
+        dispatch(getQuery(searchState.query))
+    }, [searchState.query])
+    return null
+  };
+  
+  const CustomStateResults = connectStateResults(StateResults);
 
 export default CustomSearchBox;
