@@ -94,7 +94,7 @@ const SearchResults = () => {
                             <VirtualSearchBox />
                             <FederatedSearch />
                         </InstantSearch>
-                        <Configure query="" />
+                        {/* <Configure query="" /> */}
                     </div>
                 </div>
             ) : null}
@@ -153,7 +153,6 @@ const SearchResults = () => {
                                 hitsPerPage={21}
                                 query={query}
                             />): ('')} */}
-
                                 <FilterBtn
                                     filterAnim={filterAnim}
                                     setFilterAnim={setFilterAnim}
@@ -167,7 +166,7 @@ const SearchResults = () => {
                                     <Configure
                                         userToken={persona}
                                         enablePersonalization={true}
-                                        query={query}
+                                        // query={query}
                                         hitsPerPage={21}
                                     />
                                     <Results>
