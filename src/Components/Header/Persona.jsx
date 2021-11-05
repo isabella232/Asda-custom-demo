@@ -14,10 +14,10 @@ const SelectPersona = () => {
 
     const colourStyles = {
         control: styles => ({ backgroundColor: 'transparent', display: 'flex', width: '100%', position: 'relative' }),
-        input: styles => ({ width: '100%' }),
-        container: styles => ({ width: '100%' }),
-        valueContainer: styles => ({ backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }),
-        placeholder: styles => ({ backgroundColor: 'transparent', fontSize: '0.8rem', color: 'black', fontFamily: "Open Sans", textTransform: 'capitalise' }),
+        input: styles => ({ width: '100%', cursor: 'pointer' }),
+        container: styles => ({ width: '100%', cursor: 'pointer' }),
+        valueContainer: styles => ({ backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', cursor: 'pointer' }),
+        placeholder: styles => ({ backgroundColor: 'transparent', fontSize: '0.8rem', color: 'black', fontFamily: "Open Sans", textTransform: 'capitalise', cursor: 'pointer' }),
         indicatorSeparator: styles => ({ display: "none" }),
         dropdownIndicator: styles => ({ color: 'black', display: "none"}),
         singleValue: styles => ({ top: '0', width: '50%' }),
