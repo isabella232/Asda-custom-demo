@@ -139,7 +139,7 @@ const SearchResults = () => {
                                 {catTwo ? (
                                     <Configure
                                         userToken={persona}
-                                        filters="categories.lvl0:'fresh-food-bakery'"
+                                        filters="categories.lvl0:'Fresh food bakery'"
                                         enablePersonalization={true}
                                         hitsPerPage={21}
                                     />
@@ -166,7 +166,7 @@ const SearchResults = () => {
                                     <Configure
                                         userToken={persona}
                                         enablePersonalization={true}
-                                        // query={query}
+                                        query={query}
                                         hitsPerPage={21}
                                     />
                                     <Results>
