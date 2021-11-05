@@ -32,16 +32,18 @@ const RecipesSearch = () => {
                     <h3>We have found a recipe to please you</h3>
                 </ResultsTitle>
                 <CustomHitsModal />
-                <button
-                    className="recipes-button"
-                    onClick={() => {
-                        dispatch(searchVisible(false));
-                        dispatch(recipesPage(true));
-                        dispatch(federatedSearchVisible(false));
-                    }}
-                >
-                    Show More Recipes
-                </button>
+                <ResultsTitle>
+                    <button
+                        className="recipes-button"
+                        onClick={() => {
+                            dispatch(searchVisible(false));
+                            dispatch(recipesPage(true));
+                            dispatch(federatedSearchVisible(false));
+                        }}
+                    >
+                        Show More Recipes
+                    </button>
+                </ResultsTitle>
             </Index>
         </div>
     );

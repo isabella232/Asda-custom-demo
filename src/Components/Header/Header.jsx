@@ -121,7 +121,7 @@ const Header = () => {
                             dispatch(federatedSearchVisible(false));
                             dispatch(guidedNavigation(false));
                             dispatch(getQuery(''));
-                            dispatch(recipesPage(''));
+                            dispatch(recipesPage(false));
                         }}
                     />
                 </div>
@@ -129,9 +129,10 @@ const Header = () => {
                     className="search-wrapper"
                     onClick={e => {
                         if (
-                            homepageSelector ||
-                            catOneSelector ||
-                            catTwoSelector
+                            (homepageSelector ||
+                                catOneSelector ||
+                                catTwoSelector) &&
+                            !recipesPageSelector
                         ) {
                             dispatch(federatedSearchVisible(true));
                         }
@@ -152,6 +153,7 @@ const Header = () => {
                             dispatch(catTwo(false));
                             dispatch(federatedSearchVisible(false));
                             dispatch(getQuery(''));
+                            dispatch(recipesPage(false));
                         }}
                     >
                         Drinks
@@ -163,6 +165,7 @@ const Header = () => {
                             dispatch(catTwo(true));
                             dispatch(federatedSearchVisible(false));
                             dispatch(getQuery(''));
+                            dispatch(recipesPage(false));
                         }}
                     >
                         Fresh Food & Bakery
@@ -175,6 +178,7 @@ const Header = () => {
                             dispatch(catTwo(false));
                             dispatch(federatedSearchVisible(false));
                             dispatch(getQuery(''));
+                            dispatch(recipesPage(false));
                         }}
                     >
                         Offers
@@ -186,6 +190,7 @@ const Header = () => {
                             dispatch(catTwo(false));
                             dispatch(federatedSearchVisible(false));
                             dispatch(getQuery(''));
+                            dispatch(recipesPage(false));
                         }}
                     >
                         Favourites
