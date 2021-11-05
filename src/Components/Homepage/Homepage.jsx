@@ -14,7 +14,7 @@ import { CarouselHome, CarouselLowPrice } from './Carousel';
 import CustomCarousel from './CustomCarousel';
 
 const Homepage = () => {
-    const { searchVisible, catOne, catTwo } = useSelector(
+    const { searchVisible, catOne, catTwo, recipesPage } = useSelector(
         state => state.visibility
     );
     const { persona } = useSelector(state => state.selectedPersona);
@@ -22,7 +22,9 @@ const Homepage = () => {
         <>
             <div
                 className={`homepage-wrapper ${
-                    searchVisible || catOne || catTwo ? 'hidden' : 'active'
+                    searchVisible || catOne || catTwo || recipesPage
+                        ? 'hidden'
+                        : 'active'
                 }`}
             >
                 {/* <div>

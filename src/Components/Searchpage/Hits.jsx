@@ -157,7 +157,55 @@ const ModalProduct = () => {
     );
 };
 
+const HitsRecipe = ({ hits }) => {
+    const { query } = useSelector(state => state.getQuery);
+    if (hits) {
+        return (
+            <div className="recipes-list">
+                <ul className="">
+                    {hits.map(hit => (
+                        <li
+                            key={hit.objectID}
+                            className=""
+                            onClick={() => {
+                                window.open(`${hit.url}`, '_blank');
+                            }}
+                        >
+                            <div className="img-container">
+                                <img src={hit.recipe_image} alt="" />
+                            </div>
+                            <p>{hit.SALES_UNIT}</p>
+                            <div className="infos">
+                                <h3>
+                                    <Highlight
+                                        hit={hit}
+                                        attribute="recipe_title"
+                                    />
+                                </h3>
+                                {hit.recipe_descriptioni.length < 100 ? (
+                                    <p>{hit.recipe_descriptioni}</p>
+                                ) : (
+                                    <p>
+                                        {hit.recipe_descriptioni.substring(
+                                            0,
+                                            100
+                                        )}
+                                        ...
+                                    </p>
+                                )}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    } else {
+        return <h1>Je n'ai pas de Hits {query}</h1>;
+    }
+};
+
 const CustomHits = connectHits(Hits);
 const CustomHitsModal = connectHits(HitsModal);
+const CustomHitsRecipe = connectHits(HitsRecipe);
 
-export { CustomHits, CustomHitsModal, ModalProduct };
+export { CustomHits, CustomHitsModal, ModalProduct, CustomHitsRecipe };
