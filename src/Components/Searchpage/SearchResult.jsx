@@ -188,7 +188,19 @@ const SearchResults = () => {
                                         ) : (
                                             ''
                                         )}
-                                        <CustomHits />
+                                        <InstantSearch
+                                            searchClient={searchClient}
+                                            indexName={window.index}
+                                            indexId="categoryPage"
+                                        >
+                                            <Configure
+                                                userToken={persona}
+                                                query={query}
+                                                enablePersonalization={true}
+                                                hitsPerPage={21}
+                                            />
+                                            <CustomHits />
+                                        </InstantSearch>
                                     </Results>
                                 </div>
                             </div>
