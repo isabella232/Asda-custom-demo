@@ -18,7 +18,7 @@ export const CarouselLowPrice = () => {
     const { persona } = useSelector(state => state.selectedPersona);
     return (
         <Index indexName={window.index} indexId="lowPrice_carousel">
-            <Configure ruleContexts="lowPrice" userToken={persona} />
+            <Configure ruleContexts="Low_Price" userToken={persona} />
             <CustomHitsModal />
         </Index>
     );
