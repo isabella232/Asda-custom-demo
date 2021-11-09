@@ -279,8 +279,8 @@ const CustomFilters = ({ filterAnim }) => {
                         <GenericRangeSlider
                             attribute={window.priceAttribute}
                             title="Price"
-                            min={1}
-                            max={100}
+                            // min={1}
+                            // max={100}
                         />
                     )}
                 </ExperimentalDynamicWidgets>
